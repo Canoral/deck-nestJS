@@ -5,6 +5,7 @@ import { CardModule } from 'src/card/card.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import config from 'commons/config';
+import { Card } from 'src/card/card.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import config from 'commons/config';
       username: 'deck',
       password: 'deck',
       database: 'deck',
-      entities: [],
+      entities: [Card],
     }),CardModule],
   controllers: [AppController],
   providers: [AppService],

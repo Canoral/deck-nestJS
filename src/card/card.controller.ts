@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { CardService } from './card.service';
 import { promises } from 'dns';
 
-@Controller('card')
+@Controller('cards')
 export class CardController {
   constructor(private readonly cardService: CardService) {}
 
