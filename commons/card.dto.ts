@@ -1,8 +1,14 @@
-import { IsNumber, IsNumberString, IsString } from 'class-validator';
+import { IsLowercase, IsNumber, IsNumberString, IsString, Matches } from 'class-validator';
 
 export class Id {
   @IsNumberString()
   id: number;
+}
+
+export class Name {
+  @IsString()
+  @Matches(/^[a-zA-Z]+$/)
+  name: string;
 }
 
 export class Level {
@@ -10,7 +16,5 @@ export class Level {
   level: number;
 }
 
-export class Name {
-  @IsString()
-  name: string;
-}
+
+  
