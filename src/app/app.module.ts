@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import config from 'commons/config';
 import { Card } from 'src/card/card.entity';
+import { SearchModule } from 'src/search/search.module';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { Card } from 'src/card/card.entity';
       password: 'deck',
       database: 'deck',
       entities: [Card],
-    }),CardModule],
+    }),CardModule, SearchModule],
   controllers: [AppController],
   providers: [AppService],
 })
