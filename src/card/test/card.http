@@ -3,3 +3,6 @@
 
 ### Récupérer toutes les cartes
 GET {{baseUrl}} HTTP/1.1
+
+### Récupérer une carte
+GET {{baseUrl}}/card/{{id}} HTTP/1.1

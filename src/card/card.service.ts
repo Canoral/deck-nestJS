@@ -10,12 +10,22 @@ export class CardService {
     private cardRepository: Repository<Card>,
   ) {}
 
-  async getAll() {
+  async getAll(): Promise<Card[]> {
   const result = await this.cardRepository.find();
   if(!result) {
     throw new NotFoundException('Il y a eu une erreur')
   }
   return result
+  }
+
+  async getOne(id: number): Promise<Card | undefined> {
+    const result = await this.cardRepository.findOne({
+      where: {id: id}
+    })
+    if(!result) {
+      throw new NotFoundException("La carte n'a pas été trouvée")
+    }
+    return result
   }
 
 }
