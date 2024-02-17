@@ -10,11 +10,11 @@ export class CardController {
 
   @Get()
   getAllCards(): Promise<Card[]> {
-    return this.cardService.getAll()
+    return this.cardService.getAll();
   }
 
-  @Get("card/:id")
-  getOneCard(@Param("id") params: Id): Promise<Card | undefined> {
-    return this.cardService.getOne(params.id)
+  @Get('card/:id')
+  getOneCard(@Param() params: Id): Promise<Card | undefined> {
+    return this.cardService.getOne(params.id);
   }
 }

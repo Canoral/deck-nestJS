@@ -1,5 +1,5 @@
 @baseUrl=http://localhost:3000/cards
-@id=1
+@id=w
 
 ### Récupérer toutes les cartes
 GET {{baseUrl}} HTTP/1.1

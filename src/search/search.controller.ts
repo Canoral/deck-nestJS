@@ -1,15 +1,32 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { CardService } from 'src/card/card.service';
+import {
+  Controller,
+  Get,
+  ParseFloatPipe,
+  ParseIntPipe,
+  ParseUUIDPipe,
+  Query,
+} from '@nestjs/common';
 import { SearchService } from './search.service';
-import { Name } from 'commons/card.dto';
-import { ChildEntity } from 'typeorm';
+import { Name, Element, Level } from 'commons/card.dto';
 
 @Controller('search')
 export class SearchController {
   constructor(private readonly cardService: SearchService) {}
 
-@Get()
-searchByName(@Query('name') name: Name) {
-return this.cardService.searchByName(name)
-}
+  @Get('name')
+  searchByName(@Query('name') name: Name['name']) {
+    return this.cardService.searchByName(name);
+  }
+
+  @Get('element')
+  searchByElement(@Query('element') element: Element['element']) {
+    return this.cardService.searchByElement(element);
+  }
+
+  @Get('level')
+  searchByLevel(@Query('level', ParseIntPipe) level: Level['level']) {
+    return this.cardService.searchByLevel(level);
+  }
+
+  @
 }

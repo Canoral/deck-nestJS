@@ -1,5 +1,14 @@
-@baseUrl=http://localhost:3000/search?
-@name=bogo
+@baseUrl=http://localhost:3000/search/
+@name=123
+@element=tonnerre
+@level=5
 
 ### Récupérer une carte par le nom
-GET {{baseUrl}}name={{name}}
+GET {{baseUrl}}name?name={{name}}
+
+### Récupérer une carte par l'élement
+GET {{baseUrl}}element?element={{element}}
+
+### Récupérer une carte par le niveau
+GET {{baseUrl}}level?level={{level}}
+

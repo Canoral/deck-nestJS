@@ -1,3 +1,4 @@
+import { IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -8,7 +9,7 @@ export class Card {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ nullable: true })
   element: string;
 
   @Column()
