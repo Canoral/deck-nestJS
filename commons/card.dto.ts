@@ -19,3 +19,9 @@ export class Level {
   @IsNumber({}, { message: 'Le niveau doit être un nombre.' })
   level: number;
 }
+
+export class Value {
+  @IsNumber()
+  value: number;
+  direction: string;
+}

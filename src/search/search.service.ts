@@ -1,15 +1,14 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Name, Element, Level } from 'commons/card.dto';
+import { Name, Element, Level, Value } from 'commons/card.dto';
 import { Card } from 'src/card/card.entity';
-import { Repository, DataSource } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class SearchService {
   constructor(
     @InjectRepository(Card)
     private cardRepository: Repository<Card>,
-    private datasource: DataSource,
   ) {}
 
   async searchByName(name: Name['name']): Promise<Card[] | null> {
@@ -44,6 +43,21 @@ export class SearchService {
     if (!cards || cards.length === 0) {
       throw new NotFoundException(
         `La carte avec le niveau ${level} n'a pas été trouvée`,
+      );
+    }
+
+    return cards;
+  }
+
+  async searchByValue(value: Value['value'], direction: Value['direction']) {
+    const cards = await this.cardRepository.manager.query(
+      `SELECT * FROM card WHERE value_${direction} = $1`,
+      [value],
+    );
+
+    if (!cards || cards.length === 0) {
+      throw new NotFoundException(
+        `La carte de valeur : ${value} vers la direction : value_${direction} n'a pas été trouvée`,
       );
     }
 

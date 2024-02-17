@@ -7,7 +7,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { SearchService } from './search.service';
-import { Name, Element, Level } from 'commons/card.dto';
+import { Name, Element, Level, Value } from 'commons/card.dto';
 
 @Controller('search')
 export class SearchController {
@@ -28,5 +28,8 @@ export class SearchController {
     return this.cardService.searchByLevel(level);
   }
 
-  @
+  @Get('value')
+  searchByValue(@Query('direction') direction, @Query('value') value) {
+    return this.cardService.searchByValue(value, direction);
+  }
 }

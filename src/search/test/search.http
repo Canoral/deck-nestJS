@@ -1,7 +1,9 @@
 @baseUrl=http://localhost:3000/search/
-@name=123
+@name=cu
 @element=tonnerre
 @level=5
+@direction=east
+@value=10
 
 ### Récupérer une carte par le nom
 GET {{baseUrl}}name?name={{name}}
@@ -12,3 +14,5 @@ GET {{baseUrl}}element?element={{element}}
 ### Récupérer une carte par le niveau
 GET {{baseUrl}}level?level={{level}}
 
+### Récuperer une carte par la direction
+GET {{baseUrl}}value?direction={{direction}}&value={{value}}
