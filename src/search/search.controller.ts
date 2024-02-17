@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  ParseFloatPipe,
-  ParseIntPipe,
-  ParseUUIDPipe,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, Query } from '@nestjs/common';
 import { SearchService } from './search.service';
 import { Name, Element, Level, Value } from 'commons/card.dto';
 
@@ -29,7 +22,10 @@ export class SearchController {
   }
 
   @Get('value')
-  searchByValue(@Query('direction') direction, @Query('value') value) {
+  searchByValue(
+    @Query('direction') direction: Value['direction'],
+    @Query('value', ParseIntPipe) value: Value['value'],
+  ) {
     return this.cardService.searchByValue(value, direction);
   }
 }
